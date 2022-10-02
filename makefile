@@ -1,7 +1,7 @@
 all:
-	clang++ -c main.cpp
-	clang++ -c draw.cpp
-	clang++ main.o draw.o -lsfml-graphics -lsfml-window -lsfml-system -o run
+	g++ -c main.cpp
+	g++ -c draw.cpp
+	g++ main.o draw.o -lsfml-graphics -lsfml-window -lsfml-system -o run
 
 ir:
 	clang++ main.cpp -S -emit-llvm -o lloyd.ll

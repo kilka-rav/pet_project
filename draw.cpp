@@ -3,6 +3,7 @@
 
 sf::RenderWindow window;
 sf::Event event;
+std::vector<draw::Point> main_points;
 
 void draw::init_window(unsigned int width, unsigned int height) {
     window.create(sf::VideoMode(width, height), "Lloyd's Relaxation");
@@ -127,4 +128,38 @@ int check_arguments(int argc, char** argv) {
     }
     std::cout << "Init number of points " << ret << std::endl;
     return ret;
+}
+
+extern "C" {
+    void init_window(unsigned int width, unsigned int height) {
+        draw::init_window(width, height);
+    }
+
+    void init_table(int num_points) {
+        init(main_points, num_points);
+    }
+
+    int window_is_open() {
+        return draw::window_is_open();
+    }
+
+    void draw_surf() {
+        draw::draw_surf(main_points);
+    }
+
+    void recalc() {
+        recalc(main_points);
+    }
+
+    void window_clear() {
+        draw::window_clear();
+    }
+
+    void check_event() {
+        draw::check_event();
+    }
+
+    void flush() {
+        draw::flush();
+    }
 }

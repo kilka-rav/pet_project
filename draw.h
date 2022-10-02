@@ -41,3 +41,14 @@ void recalc(std::vector<draw::Point>& vec);
 int check_arguments(int argc, char** argv);
 int count_min_len(int x, int y, std::vector<draw::Point>& points);
 float distance(int x, int y, draw::Point& point);
+
+extern "C" {
+    void init_window(unsigned int width, unsigned int height);
+    void init_table(int num_points);
+    int window_is_open();
+    void draw_surf();
+    void recalc();
+    void flush();
+    void check_event();
+    void window_clear();
+}
